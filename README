@@ -1,0 +1,4 @@
+You can run containter with:
+	$ docker run [--rm] --link <quickbuild-server-container>:QBSERVER \
+		--name <qbagent-name> --hostname <qbagent-name> \
+		ashumkin/quickbuild-agent

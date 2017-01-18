@@ -1,0 +1,12 @@
+#!/bin/sh
+
+QBSERVER=${QBSERVER_PORT#tcp://}
+AGENT_PORT=${AGENT_PORT:-8811}
+TOKEN=${TOKEN:-$(uuidgen)}
+
+sed -i /opt/buildagent/conf/node.properties \
+    -e "s/@@QBSERVER@@/$QBSERVER/" \
+    -e "s/@@AGENT_PORT@@/$AGENT_PORT/" \
+    -e "s/@@TOKEN@@/$TOKEN/"
+
+/opt/buildagent/bin/agent.sh console
